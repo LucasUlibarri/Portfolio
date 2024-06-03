@@ -1,0 +1,603 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+    --primario:#E5D3C3;
+    --secundario:#592533;
+    --terciario:#202020;
+    font-size: 16px;
+    /*cursor: url("img/favicon.svg"), auto;*/
+    scroll-behavior: smooth;
+}
+
+
+
+body{
+    background: var(--primario);
+    height: 100vh;
+    max-height: 100vh;
+    min-height: 100vh;
+    position: relative;
+}
+
+
+h1{
+    color: var(--primario);
+    text-align: center;
+    align-self: center;
+    font-size: 3.7em;
+    width: 100%;
+}
+
+h2{
+    font-size: 2.5rem;
+}
+
+h3{
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+p{
+    color: var(--terciario);
+    line-height: 1.5rem;
+}
+
+.preloader{
+    position: fixed;
+    display: flex;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--secundario);
+}
+
+.preloader.hidden{
+    animation: fadeOut 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeOut{
+
+    100%{
+        opacity: 0;
+        visibility: hidden;
+        display: none;
+    }
+
+}
+
+
+/*----Header*/
+
+header{
+    width: 90%;
+    margin: 0 5vw;
+    padding: 2vh 0;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--terciario);
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    background-color: var(--primario);
+    transition: all .2s;
+}
+
+header h3{
+    color: var(--secundario);
+}
+
+
+nav{
+    box-sizing: border-box;
+    width: 30%;
+    text-align: right;
+    align-self: center;
+}
+
+nav a{
+    color: var(--terciario);
+    margin-left: 10%;
+    font-size: 1.1rem;
+}
+
+nav a:hover{
+    color: var(--primario);
+    background: var(--secundario);
+    transition: all .2s ease-in-out;
+}
+
+
+/*---header-scroll*/
+
+#scroll{
+    transition: all .2s;
+}
+
+header#scroll{
+    border-bottom: 1px solid var(--primario);
+    background-color: var(--secundario);
+}
+
+header#scroll h3{
+    color: var(--primario);
+}
+
+header#scroll nav a{
+    color: var(--primario);
+}
+
+header#scroll nav a:hover{
+    color: var(--secundario);
+    background: var(--primario);
+    transition: all .2s;
+}
+
+
+/*----Intro*/
+
+.intro{
+    height: 100%;
+    padding: 6% 5vw 2%;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+
+.intro h3{
+    color: var(--secundario);
+    width: 50%;
+    margin-right: 5%;
+}
+
+.intro img{
+    width: 45%;
+    height: 85%;
+    object-fit: cover;
+    filter: grayscale(1);
+    opacity: .7;
+}
+
+.intro p{
+    text-align: center;
+    color: var(--secundario);
+    width: 100%;
+}
+
+/*----About*/
+
+.about{
+    height: 100%;
+    padding: 10% 5vw 2%;
+    position: relative;
+    background-color: var(--secundario);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: space-between;
+}
+
+.about h3, .about p{
+    color: var(--primario);
+    line-height: 1.5rem;
+}
+
+.about h3{
+    margin-bottom: 3%;
+}
+
+.hiam{
+    width: 45%;
+    margin-bottom: 7vh;
+}
+
+
+.experience, .skills{
+    width: 45%;
+}
+
+.experience-grid{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    column-gap: 5%;
+    row-gap: 3vh;
+}
+
+.experience-grid p.bajada-experiencia{
+    font-size: 0.8em;
+}
+
+
+
+
+/*----work*/
+
+.work{
+    height: auto;
+    padding: 7vh 5vw 0;
+    position: relative;
+    background-color: var(--primario);
+}
+
+.work h2{
+    color: var(--secundario);
+}
+
+
+.colapsable{
+    border-bottom: 1px solid var(--terciario);
+    padding: 9vh 0 10vh;
+}
+
+.colapsable:last-child{
+    border-bottom: 0;
+}
+
+.colap-boton {
+    background-color: var(--primario);
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    text-align: left;
+    padding-bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all .2s ease-out;
+}
+
+
+.chevron{
+    width: 3.5vh;
+    transition: all .2s ease-out;
+}
+
+.active>.chevron{
+    transform: rotate(180deg);
+    transition: all .2s ease-out;
+}
+
+.colap-content {
+    overflow: hidden;
+    height: 0;
+    transition: all 0.2s ease-out;
+    display: flex;
+}
+
+.active ~ .colap-content{
+    overflow: visible;
+    height: auto;
+    margin-top: 5vh;
+    transition: all .2s ease-out;
+}
+
+.colap-content-text{
+    width: 55%;
+    margin-right: 5%;
+}
+
+
+.colap-content-text p>a{
+    color: var(--terciario);
+    cursor: pointer;
+    border-bottom: 5px solid var(--secundario);
+}
+
+
+.work-skills{
+    margin: 3vh 0;
+}
+
+.work-skills p{
+    opacity: .6;
+    font-size: .8em;
+}
+
+
+.work-colap-boton a{
+    background-color: var(--secundario);
+    color: var(--primario);
+    padding: 2vh 3vw;
+}
+
+.work-colap-boton a.disabled{
+    background-color: #909090!important;
+    color: #fff;
+    padding: 2vh 3vw;
+    cursor: no-drop;
+}
+
+.work-colap-boton a:hover{
+    background-color: #3e242b;
+}
+
+
+.colap-img{
+    width: 40%;
+}
+
+.colap-img img{
+    width: 100%;
+}
+
+.colap-img img[src*="bataxi"]{
+    width: auto;
+    height: 50vh;
+    padding-left: 20%;
+}
+
+
+
+footer{    
+    height: auto;
+    padding: 5vh 5vw 2vh;
+    position: relative;
+    background-color: var(--secundario);
+}
+
+
+footer section{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+footer p{
+    color: var(--primario);
+}
+
+footer p a{
+    border-bottom: 5px solid var(--primario);
+    cursor: default;
+    color: var(--primario);
+}
+
+
+.social-media a{
+    color: var(--primario);
+    margin-left: 1vw;
+    cursor: default;
+}
+
+.social-media a:hover{
+    color: var(--secundario);
+    background: var(--primario);
+    transition: all .2s ease-in-out;
+}
+
+footer .subfooter{
+    border-top: 1px solid var(--primario);
+    margin: 3vh 0 0;
+    padding-top: 2vh;
+    text-align: center;
+}
+
+.subfooter p{
+    font-size: .8em;
+}
+
+.subfooter span{
+    font-weight: 700;
+    font-size: 1em;
+}
+
+
+
+/*Tablet---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+
+@media screen and (max-width: 991px), (max-device-width: 991px){
+
+
+    nav{
+        width: 50%;
+    }
+
+
+    /*Intro*/
+    .intro{
+        padding-top: 10%;
+    }
+
+    .intro h3{
+        width: 100%;
+        margin: 0;
+    }
+
+    .intro img{
+        width: 100%;
+        height: 60%;
+    }
+
+
+    /*About*/
+    .about{
+        padding-top: 10vh;
+        height: auto;
+    }
+
+    .hiam, .skills, .experience{
+        width: 100%;
+        margin-bottom: 3vh;
+    }
+
+    .skills{
+        order: 3;
+    }
+
+
+    /*Work*/
+    .work{
+        padding-top: 10vh;
+    }
+
+    .active ~ .colap-content{
+        flex-direction: column;
+    }
+
+    .colap-content-text{
+        width: 100%;
+        margin-right: 0;
+        order: 2;
+    }
+
+    .colap-img{
+        width: 60%;
+        align-self: center;
+    }
+
+    .colap-img img[src*="bataxi"]{
+        width: 100%;
+        height: auto;
+        padding-left: 0;
+    }
+
+    .colapsable:last-child .colap-content{
+        flex-direction: row;
+    }
+
+    .colapsable:last-child .colap-content-text{
+        width: 65%;
+        margin-right: 5%;
+    }
+
+    .colapsable:last-child .colap-img{
+        width: 30%;
+        order: 2;
+    }
+
+
+    /*Footer*/
+    footer section{
+        display: block;
+        text-align: center;
+    }
+
+    footer section p{
+        margin-bottom: 3vh;
+    }
+
+    footer .social-media{
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+
+
+}
+
+
+
+
+
+/*Mobile---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+
+@media screen and (max-width: 768px), (max-device-width: 768px){
+
+
+    nav{
+        width: 100%;
+    }
+
+    /*Intro*/
+    .intro{
+        padding: 25% 5vw 3vh;
+        height: auto;
+    }
+
+    .intro h3{
+        font-size: 1.5em;
+        margin-bottom: 5vh;
+    }
+
+    .intro img{
+        height: 40vh;
+        margin-bottom: 5vh;
+    }
+
+
+
+    /*About*/
+    .about{
+        padding: 25% 5vh 3vh;
+    }
+
+    .hiam, .skills, .experience{
+        margin-bottom: 7vh;
+    }
+
+    .about h3{
+        margin-bottom: 3vh;
+    }
+
+    .experience-grid{
+        grid-template-columns: 100%;
+        row-gap: 1vh;
+    }
+
+    .experience-grid p:nth-child(2n){
+        margin-bottom: 4vh;
+    }
+
+
+
+    /*Work*/
+    .colapsable:last-child .colap-content{
+        flex-direction: column;
+    }
+
+    .colap-img{
+        margin-bottom: 3vh;
+    }
+
+    .colapsable:last-child .colap-content-text{
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .colapsable:last-child .colap-img{
+        order: 1;
+        width: 60%;
+    }
+
+    .work-colap-boton a{
+        width: 100%;
+        font-size: 1.2em;
+        display: block;
+        text-align: center;
+        padding: 3vh 0;
+    }
+
+    .work-skills p{
+        font-size: 1em;
+    }
+
+
+    /*footer*/
+    footer section p{
+        margin-bottom: 5vh;
+        text-align: left;
+    }
+
+    .subfooter{
+        margin: 5vh 0 1vh;
+    }
+
+    .subfooter p{
+        font-size: 1em;
+    }
+
+    
+
+
+}
